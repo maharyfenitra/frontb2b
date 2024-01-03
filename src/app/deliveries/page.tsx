@@ -1,5 +1,5 @@
 "use client";
-import { useFindAllOrdersQuery } from "../orders/hooks/useFindAllOrdersQuery";
+import { useFindAllOrdersQuery } from "../porders/hooks/useFindAllOrdersQuery";
 const Deliveries = () => {
   useFindAllOrdersQuery();
   return <div>Deliveries</div>;

@@ -20,73 +20,90 @@ export const modules: ModulesType[] = [
   {
     primary: "Dashboard",
     icon: <DashboardIcon />,
+    link: "dashboard"
   },
   {
     primary: "Items",
     icon: <CategoryIcon />,
+    link: "items"
   },
   {
     primary: "Purchase Orders",
     icon: <ShoppingCartIcon />,
+    link: "porders"
   },
   {
     primary: "Reception",
     icon: <ReceiptIcon />,
+    link: "receptions"
   },
   {
     primary: "Purchase Invoices",
     icon: <MoneyIcon />,
+    link: "pinvoices"
   },
   {
     primary: "Purchase Payment",
     icon: <PaymentsIcon />,
+    link: "ppayments"
   },
   {
     primary: "Purchasing accounting",
     icon: <AccountBalanceWalletIcon />,
+    link: "paccounting"
   },
   {
     primary: "Sales Orders",
     icon: <SellIcon />,
+    link: "sorders"
   },
   {
     primary: "Deliveries",
     icon: <LocalShippingIcon />,
+    link: "deliveries"
   },
   {
     primary: "Sales Invoices",
     icon: <RequestPageIcon />,
+    link: "sinvoices"
   },
   {
     primary: "Sales regulations",
     icon: <PaymentIcon />,
+    link: "spayments"
   },
   {
     primary: "Sales accounting",
     icon: <AccountBalanceIcon />,
+    link: "saccounting"
   },
   {
     primary: "Stock",
     icon: <InventoryIcon />,
+    link: "stocks"
   },
 ];
 
 export const configModules: ModulesType[] = [
   {
-    primary: "Translation",
+    primary: "Translations",
     icon: <TranslateIcon />,
+    link: "translations"
   },
   {
     primary: "Users",
     icon: <PeopleIcon />,
+    link: "users"
   },
   {
     primary: "Currencies",
     icon: <CurrencyExchangeIcon />,
+    link: "currencies"
   },
 ];
 
 type ModulesType = {
   primary: string;
   icon: React.ReactNode;
+  link: string;
 };
