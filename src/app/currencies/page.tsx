@@ -1,7 +1,11 @@
 "use client";
-const Curreincies = () => {
+import { Header } from "@/lib";
+
+const Currencies = () => {
   
-  return <div>Curreincies</div>;
+  return <div>
+          <Header title="Currencies"/>
+  </div>;
 };
 
-export default Curreincies;
+export default Currencies;

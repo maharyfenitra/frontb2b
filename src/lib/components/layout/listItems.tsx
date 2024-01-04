@@ -29,7 +29,7 @@ export const secondaryListItems = (
     </ListSubheader>
     {configModules.map((module, index) => {
       return (
-        <Link href={module.link} key={index}>
+        <Link href={module.link} replace key={index}>
           <ListItemButton>
             <ListItemIcon>{module.icon}</ListItemIcon>
             <ListItemText primary={module.primary} />
