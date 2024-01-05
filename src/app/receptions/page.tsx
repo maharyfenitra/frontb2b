@@ -1,7 +1,8 @@
 "use client";
+import { Header } from "@/lib";
 const Receptions = () => {
   
-  return <div>Receptions</div>;
+  return <div><Header title="Reception"/></div>;
 };
 
 export default Receptions;

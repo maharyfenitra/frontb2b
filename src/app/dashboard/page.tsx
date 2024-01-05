@@ -1,7 +1,11 @@
 "use client";
+import { Header } from "@/lib";
 const Dashboard = () => {
-  
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <Header title="Dashboard" />
+    </div>
+  );
 };
 
 export default Dashboard;

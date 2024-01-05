@@ -20,67 +20,67 @@ export const modules: ModulesType[] = [
   {
     primary: "Dashboard",
     icon: <DashboardIcon />,
-    link: "dashboard"
+    link: "/dashboard"
   },
   {
     primary: "Items",
     icon: <CategoryIcon />,
-    link: "items"
+    link: "/items"
   },
   {
     primary: "Purchase Orders",
     icon: <ShoppingCartIcon />,
-    link: "porders"
+    link: "/porders"
   },
   {
     primary: "Reception",
     icon: <ReceiptIcon />,
-    link: "receptions"
+    link: "/receptions"
   },
   {
     primary: "Purchase Invoices",
     icon: <MoneyIcon />,
-    link: "pinvoices"
+    link: "/pinvoices"
   },
   {
     primary: "Purchase Payment",
     icon: <PaymentsIcon />,
-    link: "ppayments"
+    link: "/ppayments"
   },
   {
     primary: "Purchasing accounting",
     icon: <AccountBalanceWalletIcon />,
-    link: "paccounting"
+    link: "/paccounting"
   },
   {
     primary: "Sales Orders",
     icon: <SellIcon />,
-    link: "sorders"
+    link: "/sorders"
   },
   {
     primary: "Deliveries",
     icon: <LocalShippingIcon />,
-    link: "deliveries"
+    link: "/deliveries"
   },
   {
     primary: "Sales Invoices",
     icon: <RequestPageIcon />,
-    link: "sinvoices"
+    link: "/sinvoices"
   },
   {
     primary: "Sales regulations",
     icon: <PaymentIcon />,
-    link: "spayments"
+    link: "/spayments"
   },
   {
     primary: "Sales accounting",
     icon: <AccountBalanceIcon />,
-    link: "saccounting"
+    link: "/saccounting"
   },
   {
     primary: "Stock",
     icon: <InventoryIcon />,
-    link: "stocks"
+    link: "/stocks"
   },
 ];
 
@@ -88,17 +88,17 @@ export const configModules: ModulesType[] = [
   {
     primary: "Translations",
     icon: <TranslateIcon />,
-    link: "translations"
+    link: "/translations"
   },
   {
     primary: "Users",
     icon: <PeopleIcon />,
-    link: "users"
+    link: "/users"
   },
   {
     primary: "Currencies",
     icon: <CurrencyExchangeIcon />,
-    link: "currencies"
+    link: "/currencies"
   },
 ];
 
