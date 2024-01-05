@@ -1,26 +1,31 @@
 "use client";
+import { useRef } from "react";
 import validator from "@rjsf/validator-ajv8";
 import { detailsItemSchema, uiSchema } from "./schemas/detailsSchema";
 import Form from "@rjsf/mui";
-import { Header } from "@/lib";
+import { Header, ObjectFieldTemplate } from "@/lib";
 import { fields } from "./schemas/detailsSchema";
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
 
 const Details = () => {
+  const ref = useRef(null);
+
   return (
     <div>
       <Header title="Item Details " />
       <Form
+        ref={ref}
         schema={detailsItemSchema}
-        uiSchema={uiSchema}
+        uiSchema={{
+          ...uiSchema,
+          "ui:ObjectFieldTemplate": ObjectFieldTemplate,
+        }}
         validator={validator}
         onChange={() => console.log("change")}
         onSubmit={() => console.log("submit")}
         onError={() => console.log("error")}
         fields={fields}
         
-      />
+      ><></></Form>
     </div>
   );
 };

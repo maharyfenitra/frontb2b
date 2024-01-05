@@ -14,5 +14,5 @@ export const TopMenu = (props: TopMenuPropsType) => {
 };
 
 type TopMenuPropsType = {
-    onClickCreate: React.MouseEventHandler<HTMLButtonElement> | undefined;
+    onClickCreate: React.MouseEventHandler<HTMLButtonElement>;
 }
