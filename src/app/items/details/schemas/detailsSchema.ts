@@ -1,15 +1,18 @@
-import { RJSFSchema, UiSchema, FieldProps } from "@rjsf/utils";
-import { TextFieldStandard, ArrayFieldTemplate } from "@/lib";
-import { ItemNameInput } from "../components/item-name-input";
+import { RJSFSchema, UiSchema } from "@rjsf/utils";
+import { ItemNameInput } from "../components/ItemNameInput";
 
 export const detailsItemSchema: RJSFSchema = {
   type: "object",
   required: ["title"],
   properties: {
-    title: { type: "string", title: "Item name", default: "New Item" , require: true},
+    title: { type: "string", title: "Title:", require: true},
     description: {
       type: "string",
-      title: "Description",
+      title: "Description:",
+    },
+    price: {
+      type: "number",
+      title: "Price:",
     },
   },
 };
