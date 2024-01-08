@@ -3,7 +3,7 @@ import { ArrayFieldTemplateProps } from "@rjsf/utils";
 export const ArrayFieldTemplate: React.FC<ArrayFieldTemplateProps> = (
   props: ArrayFieldTemplateProps
 ) => {
-  console.log("Arraytemplate");
+
   return (
     <>
         {props.items.map((element, index) => {

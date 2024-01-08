@@ -1,7 +1,10 @@
 "use client";
+import { Header } from "@/lib";
 const Translations = () => {
   
-  return <div>Translations</div>;
+  return <div>
+    <Header title="Translations"/>
+  </div>;
 };
 
 export default Translations;

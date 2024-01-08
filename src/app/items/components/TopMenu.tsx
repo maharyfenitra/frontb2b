@@ -5,7 +5,7 @@ import { ButtonEdit, ButtonCreate, ButtonDelete } from "@/lib";
 
 export const TopMenu = (props: TopMenuPropsType) => {
   return (
-    <Stack direction="row" spacing={2}>
+    <Stack direction="row" spacing={2} sx={{margin: 4}}>
       <ButtonCreate label={"Create"} onClick={props.onClickCreate}></ButtonCreate>
       <ButtonEdit label={"Edit"}></ButtonEdit>
       <ButtonDelete label={"Delete"}></ButtonDelete>

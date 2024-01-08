@@ -1,2 +1,2 @@
 export *  from "./ArrayFieldTemplate"
-export * from "./object-field-template"
+export * from "./ObjectFieldTemplate"

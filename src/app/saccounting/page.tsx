@@ -1,7 +1,8 @@
 "use client";
+import { Header } from "@/lib";
 const SAccounting = () => {
   
-  return <div>SAccounting</div>;
+  return <div><Header title="Sales Accounting"/></div>;
 };
 
 export default SAccounting;

@@ -1,7 +1,10 @@
 "use client";
-const Deliveries = () => {
+import { Header } from "@/lib";
+const Users = () => {
   
-  return <div>Deliveries</div>;
+  return <div>
+    <Header title="Users"/>
+  </div>;
 };
 
-export default Deliveries;
+export default Users;

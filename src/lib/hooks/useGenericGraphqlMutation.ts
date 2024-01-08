@@ -4,7 +4,7 @@ import { GraphqlModelMutation } from "../types";
 
 export const useGenericGraphqlMutation = <T extends GraphqlModelMutation, TVariables>(graphqlMutation: T) => {
     const { fetchData } = useFetch(graphqlMutation.mutation);
-  const query = useMutation({
+  const mutation = useMutation({
     
     mutationFn: (variables: TVariables) =>
       fetchData(variables)
@@ -12,5 +12,5 @@ export const useGenericGraphqlMutation = <T extends GraphqlModelMutation, TVaria
         .catch((error) => console.error(error.message)),
   });
 
-  return { ...query, data: query.data };
+  return { ...mutation, data: mutation.data };
 }

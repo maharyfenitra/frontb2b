@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import * as React from "react";
-import Link from 'next/link';
+import Link from "next/link";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
@@ -17,6 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
+import Container from '@mui/material/Container';
 
 function Copyright(props: any) {
   return (
@@ -166,12 +167,17 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
           }}
         >
           <Toolbar />
-          <Box maxWidth="lg" sx={{ margin: 4 }}>
+          <Container maxWidth="lg" sx={{ margin: 4 }}>
             <Grid container spacing={3}>
-              {children}
+              <Grid item xs={12} md={12} lg={12}>
+                
+                {children}
+                
+                
+              </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
-          </Box>
+          </Container>
         </Box>
       </Box>
     </ThemeProvider>

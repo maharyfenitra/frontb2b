@@ -7,9 +7,9 @@ export const Header = ({ title }: { title: string }) => {
   return (
     <Box
       sx={{
-        marginBottom: 4,
+        margin: 4,
         justifyContent: "center",
-        width: "100vw",
+        width: "100%",
         fontSize: 50,
         color: theme.palette.primary.main,
       }}
