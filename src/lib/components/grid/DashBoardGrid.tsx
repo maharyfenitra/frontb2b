@@ -1,14 +1,13 @@
+"use client"
 import React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { GridApiCommunity } from "@mui/x-data-grid/internals";
-import { useGridApiRef } from "@mui/x-data-grid";
 
-export const ItemDashboardGrid = React.forwardRef<
+export const DashboardGrid = React.forwardRef<
   React.MutableRefObject<GridApiCommunity>,
-  ItemDashboardGridProps
+  DashboardGridProps
 >((props, ref) => {
-
   return (
     <Box sx={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -21,7 +20,9 @@ export const ItemDashboardGrid = React.forwardRef<
             },
           },
         }}
-        apiRef={ref}
+        apiRef={
+          ref as unknown as React.MutableRefObject<GridApiCommunity> | undefined
+        }
         pageSizeOptions={[5]}
         checkboxSelection
         disableRowSelectionOnClick
@@ -30,9 +31,9 @@ export const ItemDashboardGrid = React.forwardRef<
   );
 });
 
-ItemDashboardGrid.displayName = "ItemDashboardGrid";
+DashboardGrid.displayName = "ItemDashboardGrid";
 
-type ItemDashboardGridProps = {
+type DashboardGridProps = {
   columns: GridColDef[];
   rows: any[];
 };

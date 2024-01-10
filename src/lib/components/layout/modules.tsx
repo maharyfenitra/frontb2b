@@ -15,6 +15,8 @@ import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import RequestPageIcon from '@mui/icons-material/RequestPage';
 import SellIcon from '@mui/icons-material/Sell';
 import MoneyIcon from '@mui/icons-material/Money';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import EvStationIcon from '@mui/icons-material/EvStation';
 
 export const modules: ModulesType[] = [
   {
@@ -94,6 +96,16 @@ export const configModules: ModulesType[] = [
     primary: "Users",
     icon: <PeopleIcon />,
     link: "/users"
+  },
+  {
+    primary: "Customer",
+    icon: <SupportAgentIcon />,
+    link: "/customers"
+  },
+  {
+    primary: "Supplier",
+    icon: <EvStationIcon />,
+    link: "/supplier"
   },
   {
     primary: "Currencies",

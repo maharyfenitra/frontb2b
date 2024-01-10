@@ -35,7 +35,7 @@ const Details = () => {
   };
   return (
     <div>
-      <Header title="Item Details " />
+      <Header title="Item Details"  backUrl="/items"/>
       <GenericForm
         schema={detailsItemSchema}
         uiSchema={{

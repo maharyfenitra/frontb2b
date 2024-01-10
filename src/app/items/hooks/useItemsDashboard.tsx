@@ -1,11 +1,10 @@
 import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { useGridApiRef } from "@mui/x-data-grid";
-import { useFindAllItemsQuery } from "../hooks/useFindAllItemsQuery";
-import { MoreButton } from "../components/MoreButton";
-import { GridApiCommunity } from "@mui/x-data-grid/internals";
-import { useEffect } from "react";
+import { useFindAllItemsQuery } from "./useFindAllItemsQuery";
+import { TVariableDashbord, MoreButton } from "@/lib";
 
-export const useItemDashboard = (): TVariable => {
+
+export const useItemsDashboard = (): TVariableDashbord => {
   const { data: rows } = useFindAllItemsQuery();
   const ref = useGridApiRef();
 
@@ -42,11 +41,5 @@ export const useItemDashboard = (): TVariable => {
       },
     },
   ];
-  return { columns, rows, ref };
-};
-
-type TVariable = {
-  columns: GridColDef[];
-  rows: any[] | undefined;
-  ref: React.MutableRefObject<GridApiCommunity>;
+  return { columns, rows: rows||[], ref };
 };

@@ -8,8 +8,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Typography from "@mui/material/Typography";
 
-const options = ["Edit", "Delete"];
-
 const ITEM_HEIGHT = 48;
 
 export function MoreButton() {
