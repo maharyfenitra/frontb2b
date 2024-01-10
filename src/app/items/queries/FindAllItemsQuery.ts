@@ -5,6 +5,7 @@ export class FindAllItemssQuery implements GraphqlModelQuery {
       id
       label
       description
+      price
       createdAt
       updateAt
     }

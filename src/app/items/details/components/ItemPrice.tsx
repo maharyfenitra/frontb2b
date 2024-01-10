@@ -1,10 +1,10 @@
 import { FieldProps } from "@rjsf/utils";
 import { TextFieldStandard } from "@/lib";
 
-export const ItemNameInput: React.FC<FieldProps> = (props: FieldProps) => {
-  console.log(props);
+export const ItemPrice: React.FC<FieldProps> = (props: FieldProps) => {
+
   const handleChange = (e : any) => {
-    props.onChange(e?.target?.value)
+    props.onChange(parseFloat(e?.target?.value))
   };
   
   return (
@@ -12,6 +12,7 @@ export const ItemNameInput: React.FC<FieldProps> = (props: FieldProps) => {
       label={props.schema.title}
       value={props.formData}
       onChange={handleChange}
+      type={props.uiSchema?.['ui:option']?.type || "text"}
     />
   );
 };

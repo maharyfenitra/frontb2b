@@ -1,36 +1,32 @@
 "use client";
-import { TopMenu } from "./components/TopMenu";
-import { Header } from "@/lib";
+import { TopMenu } from "@/lib";
+import { Header , DashboardGrid} from "@/lib";
 import { useTopMenuAction } from "./hooks/useTopMenyAction";
-import DataGridDemo from "./components/DataGridDemo";
-import { useFindAllItemsQuery } from "./hooks/useFindAllItemsQuery";
-import { GridColDef } from "@mui/x-data-grid";
+import { useItemsDashboard } from "./hooks/useItemsDashboard";
+import { GridApiCommunity } from "@mui/x-data-grid/internals";
 
 const Items = () => {
   const { createItemEvent } = useTopMenuAction();
-  const { data: rows  } = useFindAllItemsQuery();
+  const { ref, rows, columns } = useItemsDashboard();
 
-  
-  const columns: GridColDef[] = [
-    {
-      field: "id", headerName: "ID", width: 100
-    },
-    {
-      field: "label", headerName: "Label", width: 100
-    },
-    {
-      field: "description", headerName: "Description", width: 100
-    }
-  ]
-  
   return (
     <>
-      <Header title={"Items"} />
-      <TopMenu onClickCreate={createItemEvent} />
-      {
-        rows && <DataGridDemo columns={columns} rows={rows} />
-      }
-      
+      <Header title={"Items"}/>
+      <TopMenu
+        handleClickCreate={createItemEvent}
+        handleClickEdit={() => {
+          console.log(ref.current.getSelectedRows());
+        }}
+      />
+      <DashboardGrid
+        columns={columns}
+        rows={rows}
+        ref={
+          ref as unknown as
+            | React.Ref<React.MutableRefObject<GridApiCommunity>>
+            | undefined
+        }
+      />
     </>
   );
 };

@@ -30,11 +30,12 @@ const Details = () => {
       userId: "userTest",
       label: data.formData.title,
       description: data.formData.description,
+      price: data.formData.price
     });
   };
   return (
     <div>
-      <Header title="Item Details " />
+      <Header title="Item Details"  backUrl="/items"/>
       <GenericForm
         schema={detailsItemSchema}
         uiSchema={{
@@ -43,7 +44,6 @@ const Details = () => {
         }}
         validator={validator}
         onChange={(e: IChangeEvent<any, any, any>) => {
-          console.log(e.formData);
         }}
         onSubmit={onSubmit}
         onError={() => console.log("error")}
