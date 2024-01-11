@@ -4,7 +4,7 @@ import { Header } from "@/lib";
 const Details = () => {
   return (
     <div>
-      <Header title="Details" backUrl="/porders" />
+      <Header title="Delivery Details" backUrl="/deliveries" />
     </div>
   );
 };
