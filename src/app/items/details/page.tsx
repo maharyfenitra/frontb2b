@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import { useCreateItemMutation } from "./hooks/useCreateItemMutation";
 import { IChangeEvent } from "@rjsf/core";
 import { FormEvent , useState} from "react";
+import Alert from '@mui/material/Alert';
 
 const Details = () => {
   const [formData, setFormData] = useState<FormDataType>({
@@ -16,7 +17,7 @@ const Details = () => {
     title: "New Item",
     price: 0,
   });
-  const { mutate } = useCreateItemMutation();
+  const { mutate, isSuccess } = useCreateItemMutation();
   const onSubmit = (
     data: IChangeEvent<any, any, any>,
     event: FormEvent<any>
@@ -36,6 +37,7 @@ const Details = () => {
   return (
     <div>
       <Header title="Item Details"  backUrl="/items"/>
+      {isSuccess && <Alert severity="success">Item saved.</Alert>}
       <GenericForm
         schema={detailsItemSchema}
         uiSchema={{

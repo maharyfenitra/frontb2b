@@ -8,9 +8,8 @@ export const DashboardGrid = React.forwardRef<
   React.MutableRefObject<GridApiCommunity>,
   DashboardGridProps
 >((props, ref) => {
-  return (
-    <Box sx={{ height: 400, width: "100%" }}>
-      <DataGrid
+  return (<DataGrid
+        sx={{ height: 400, width: "100%" }}
         rows={props.rows}
         columns={props.columns}
         initialState={{
@@ -27,7 +26,6 @@ export const DashboardGrid = React.forwardRef<
         checkboxSelection
         disableRowSelectionOnClick
       />
-    </Box>
   );
 });
 

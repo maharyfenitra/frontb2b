@@ -167,7 +167,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ margin: 4 }}>
+          <Container maxWidth="xl">
             <Grid container spacing={3}>
               <Grid item xs={12} md={12} lg={12}>
                 

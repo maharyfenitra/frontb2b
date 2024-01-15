@@ -3,9 +3,12 @@ import { Header, DashboardGrid, TopMenu } from "@/lib";
 import { usePOrdersDashboard} from "./hooks/usePOrdersDashboard";
 import { GridApiCommunity } from "@mui/x-data-grid/internals";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const POrders = () => {
   const { ref, columns, rows } = usePOrdersDashboard();
+  const path = usePathname();
+  console.log(path)
   const { push } = useRouter();
   return (
     <div>
