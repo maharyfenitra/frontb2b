@@ -2,7 +2,7 @@ import {
   GridColDef,
   GridRenderCellParams,
   GridValueGetterParams,
-  GridRenderEditCellParams
+  GridRenderEditCellParams,
 } from "@mui/x-data-grid";
 import { useGridApiRef } from "@mui/x-data-grid";
 import { useState } from "react";
@@ -13,7 +13,7 @@ import { ComboBox } from "../components/ItemEdit/Combo";
 export const usePordersDetails = (): TVariableDashbord & {
   addNewRow: () => any;
 } => {
-  const [rows, setRows] = useState<T[]>([]);
+  const [rows, setRows] = useState<TypeDetails[]>([]);
 
   const ref = useGridApiRef();
 
@@ -42,9 +42,26 @@ export const usePordersDetails = (): TVariableDashbord & {
       headerName: "Item",
       flex: 2,
       editable: true,
-      renderEditCell:(params: GridRenderEditCellParams)=>{
-        console.log(params)
-        return <ComboBox params={params}rows={rows} setRow={setRows}/>;
+      renderEditCell: (params: GridRenderEditCellParams) => {
+        return (
+          <ComboBox
+              callback={(v: TypeDetails) => {
+              setRows(
+                rows.map((elt) => {
+                  if (elt.id === params.id) {
+                    return {
+                      ...v,
+                      qty: 0,
+                      id: params.id,
+                    };
+                  }
+                  return elt;
+                })
+              );
+            }
+          }
+          />
+        );
       },
     },
     {
@@ -70,7 +87,7 @@ export const usePordersDetails = (): TVariableDashbord & {
       field: "total",
       headerName: "Total",
       valueGetter: (params: GridValueGetterParams) => {
-        return params.row?.price*params.row?.qty;
+        return params.row?.price * params.row?.qty;
       },
       flex: 2,
       align: "right",
@@ -82,7 +99,6 @@ export const usePordersDetails = (): TVariableDashbord & {
       align: "right",
 
       renderCell: (params: GridRenderCellParams): React.ReactNode => {
-        //console.log(params);
         return <MoreButton />;
       },
     },
@@ -90,7 +106,7 @@ export const usePordersDetails = (): TVariableDashbord & {
   return { columns, rows, ref, addNewRow };
 };
 
-type T = {
+type TypeDetails = {
   id: string;
   label: string;
   description: string;

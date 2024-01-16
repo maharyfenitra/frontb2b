@@ -32,11 +32,6 @@ type TData = {
   isSuccess: boolean;
   isLoading: boolean;
   data:
-    | {
-        id: string;
-        name: string;
-        description: string;
-        
-      }[]
+    | TypeSupplier[]
     | undefined;
 };

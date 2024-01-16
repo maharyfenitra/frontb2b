@@ -10,7 +10,7 @@ const Details = () => {
     <div>
       <Header title="Details" backUrl="/porders" />
       <Box sx={{ margin: 4 }}>
-        <ButtonSave label="Save" />
+        <ButtonSave label="Save" onClick={() =>{}}/>
         <Tab />
       </Box>
     </div>

@@ -1,6 +1,6 @@
-import { GraphqlModelQuery } from "@/lib";
-export class FindAllSuppliersQuery implements GraphqlModelQuery {
-  readonly query = `query FindAllSuppiers {
+import { GraphqlModelMutation } from "@/lib";
+export class CreateNewOrderMutation implements GraphqlModelMutation {
+  readonly mutation = `query FindAllSuppiers {
     findAllSuppliers {
       id
       firstName

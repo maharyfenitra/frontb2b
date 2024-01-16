@@ -4,15 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { useFindAllItemsQuery } from "@/lib";
 import { GridRenderEditCellParams } from "@mui/x-data-grid";
 
-export const ComboBox = ({
-  params,
-  rows,
-  setRow,
-}: {
-  rows: any[];
-  setRow: any;
-  params: GridRenderEditCellParams;
-}) => {
+export const ComboBox = ({ callback }: { callback: any }) => {
   const { data } = useFindAllItemsQuery();
   const [value, setValue] = React.useState<{
     id: string;
@@ -31,21 +23,7 @@ export const ComboBox = ({
       sx={{ width: "100%" }}
       value={value}
       onChange={(e, v) => {
-        setRow(
-          rows.map((elt) => {
-            if (elt.id === params.id) {
-              
-              return {
-                ...v,
-                qty: 0,
-                id: params.id,
-              };
-            }
-
-            return elt;
-          })
-        );
-
+        callback(v);
         setValue(v);
       }}
       renderInput={(params) => <TextField {...params} label="Choose Item" />}
