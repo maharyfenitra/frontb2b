@@ -18,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TansTackProvider>
-          <MainLayout>{children}</MainLayout>
-        </TansTackProvider>
+          <TansTackProvider>
+            <MainLayout>{children}</MainLayout>
+          </TansTackProvider>
       </body>
     </html>
   );

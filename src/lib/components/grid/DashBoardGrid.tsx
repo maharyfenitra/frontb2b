@@ -3,14 +3,14 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { GridApiCommunity } from "@mui/x-data-grid/internals";
+import { DataGridProps } from "@mui/x-data-grid";
 
 export const DashboardGrid = React.forwardRef<
   React.MutableRefObject<GridApiCommunity>,
   DashboardGridProps
 >((props, ref) => {
-  return (
-    <Box sx={{ height: 400, width: "100%" }}>
-      <DataGrid
+  return (<DataGrid
+        sx={{ height: 400, width: "100%" }}
         rows={props.rows}
         columns={props.columns}
         initialState={{
@@ -27,7 +27,6 @@ export const DashboardGrid = React.forwardRef<
         checkboxSelection
         disableRowSelectionOnClick
       />
-    </Box>
   );
 });
 
@@ -36,4 +35,4 @@ DashboardGrid.displayName = "ItemDashboardGrid";
 type DashboardGridProps = {
   columns: GridColDef[];
   rows: any[];
-};
+} & DataGridProps;

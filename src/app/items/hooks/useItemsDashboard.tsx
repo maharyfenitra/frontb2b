@@ -1,6 +1,6 @@
 import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { useGridApiRef } from "@mui/x-data-grid";
-import { useFindAllItemsQuery } from "./useFindAllItemsQuery";
+import { useFindAllItemsQuery } from "@/lib";
 import { TVariableDashbord, MoreButton } from "@/lib";
 
 
@@ -13,27 +13,29 @@ export const useItemsDashboard = (): TVariableDashbord => {
     {
       field: "id",
       headerName: "ID",
-      width: 100,
+     flex: 1,
     },
     {
       field: "label",
       headerName: "Label",
-      width: 200,
+      flex: 2,
     },
     {
       field: "description",
       headerName: "Description",
-      width: 400,
+      flex: 4,
     },
     {
       field: "price",
       headerName: "Price",
-      width: 100,
+      flex: 1,
+      align: "right",
     },
     {
       field: "action",
       headerName: "Action",
-      width: 100,
+      flex: 1,
+      align: "right",
 
       renderCell: (params: GridRenderCellParams): React.ReactNode => {
         //console.log(params);
