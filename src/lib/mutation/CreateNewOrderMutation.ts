@@ -1,20 +1,24 @@
 import { GraphqlModelMutation } from "@/lib";
 export class CreateNewOrderMutation implements GraphqlModelMutation {
-  readonly mutation = `query FindAllSuppiers {
-    findAllSuppliers {
-      id
-      firstName
-      lastName
-      name
-      mail
-      adress
-      area
-      city
-      description
-      stat
-      nif
-    }
-  }
+  readonly mutation = `mutation CreateOrder(
+                        $supplierId: String!
+                        $reference: String!
+                        $description: String!
+                        $orderDetailsInput: [OrderDetailsInput!]!
+                    ) {
+                        createOrder(
+                        createOrderInput: {
+                            supplierId: $supplierId
+                            reference: $reference
+                            description: $description
+                            orderDetailsInput: $orderDetailsInput
+                        }
+                        ) {
+                        id
+                        reference
+                        description
+                        orderDetailsEntity{id}
+                        }
+                    }
   `;
-cacheKey = "findAllSuppliers"
 }

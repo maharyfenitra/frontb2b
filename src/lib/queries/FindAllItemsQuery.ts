@@ -1,5 +1,5 @@
 import { GraphqlModelQuery } from "@/lib";
-export class FindAllItemssQuery implements GraphqlModelQuery {
+export class FindAllItemsQuery implements GraphqlModelQuery {
   readonly query = `query FindAllItems {
     findAllitems {
       id

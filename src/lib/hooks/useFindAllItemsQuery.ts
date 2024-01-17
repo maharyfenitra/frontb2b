@@ -1,9 +1,9 @@
 import { useGenericGraphqlQuery } from "@/lib";
-import { FindAllItemssQuery } from "../queries/FindAllItemsQuery";
+import { FindAllItemsQuery } from "../queries/FindAllItemsQuery";
 
 export const useFindAllItemsQuery = () => {
-  return useGenericGraphqlQuery<FindAllItemssQuery, TData>(
-    new FindAllItemssQuery(),
+  return useGenericGraphqlQuery<FindAllItemsQuery, TData>(
+    new FindAllItemsQuery(),
     (data) => {
       return {
         isSuccess: data.isSuccess,
@@ -19,9 +19,9 @@ export type TData = {
   isLoading: boolean;
   data:
     | {
-        id: string;
+        id?: string;
         label: string;
-        description: string;
+        description?: string;
       }[]
     | undefined;
 };

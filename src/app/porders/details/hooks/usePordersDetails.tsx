@@ -5,33 +5,57 @@ import {
   GridRenderEditCellParams,
 } from "@mui/x-data-grid";
 import { useGridApiRef } from "@mui/x-data-grid";
-import { useState } from "react";
+import { useMemo } from "react";
 
 import { TVariableDashbord, MoreButton } from "@/lib";
 import { ComboBox } from "../components/ItemEdit/Combo";
+import { TVariableOrder, TVariableOrderDetails } from "@/lib";
+import { orderDetailsInformationState } from "../states/orderDetailsInformationState";
+import { useRecoilState } from "recoil";
 
 export const usePordersDetails = (): TVariableDashbord & {
   addNewRow: () => any;
 } => {
-  const [rows, setRows] = useState<TypeDetails[]>([]);
-
   const ref = useGridApiRef();
 
-  const addNewRow = () => {
-    let l = rows.length.toString();
-    setRows([
-      ...rows,
-      {
-        id: l,
-        label: "Empty",
-        description: "",
-        price: 0,
-        qty: 0,
-      },
-    ]);
-  };
+  const [orderDetailsInformation, setOrderDetailsInformation] =
+    useRecoilState<TVariableOrder>(orderDetailsInformationState);
 
-  const columns: GridColDef[] = [
+  const addNewRow = () => {
+    let l = orderDetailsInformation.orderDetailsInput.length.toString();
+    setOrderDetailsInformation({
+      ...orderDetailsInformation,
+      orderDetailsInput: [
+        ...orderDetailsInformation.orderDetailsInput,
+        {
+          id: l,
+          label: "Empty",
+          itemId: "",
+          price: 0,
+          qty: 0,
+        } as TVariableOrderDetails,
+      ],
+    });
+  };
+  const handleSelectItem=(id: string, ligne: TVariableOrderDetails) => {
+    setOrderDetailsInformation({
+      ...orderDetailsInformation,
+      orderDetailsInput:
+        orderDetailsInformation.orderDetailsInput.map((elt) => {
+          if (elt.id === id) {
+            return {
+              itemId: ligne.id || "",
+              label: ligne.label,
+              price: ligne.price,
+              qty: 0,
+              id: id,
+            };
+          }
+          return elt;
+        }),
+    });
+  }
+  const columns: GridColDef[] = useMemo(()=>[
     {
       field: "id",
       headerName: "ID",
@@ -45,30 +69,20 @@ export const usePordersDetails = (): TVariableDashbord & {
       renderEditCell: (params: GridRenderEditCellParams) => {
         return (
           <ComboBox
-              callback={(v: TypeDetails) => {
-              setRows(
-                rows.map((elt) => {
-                  if (elt.id === params.id) {
-                    return {
-                      ...v,
-                      qty: 0,
-                      id: params.id,
-                    };
-                  }
-                  return elt;
-                })
-              );
+            onChange={(t: TVariableOrderDetails) => handleSelectItem(params.id as string,t )}
+            value={
+              orderDetailsInformation.orderDetailsInput.find(
+                (el) => el.id === params.id
+              ) ||
+              orderDetailsInformation.orderDetailsInput[
+                orderDetailsInformation.orderDetailsInput.length - 1
+              ]
             }
-          }
           />
         );
       },
     },
-    {
-      field: "description",
-      headerName: "Description",
-      flex: 4,
-    },
+  
     {
       field: "qty",
       headerName: "Quatity",
@@ -102,14 +116,13 @@ export const usePordersDetails = (): TVariableDashbord & {
         return <MoreButton />;
       },
     },
-  ];
-  return { columns, rows, ref, addNewRow };
+  ], [orderDetailsInformation]);
+  return { columns, rows: [], ref, addNewRow };
 };
 
 type TypeDetails = {
   id: string;
   label: string;
-  description: string;
   qty: number;
   price: number;
 };

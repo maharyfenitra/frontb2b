@@ -3,6 +3,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { GridApiCommunity } from "@mui/x-data-grid/internals";
+import { DataGridProps } from "@mui/x-data-grid";
 
 export const DashboardGrid = React.forwardRef<
   React.MutableRefObject<GridApiCommunity>,
@@ -34,4 +35,4 @@ DashboardGrid.displayName = "ItemDashboardGrid";
 type DashboardGridProps = {
   columns: GridColDef[];
   rows: any[];
-};
+} & DataGridProps;

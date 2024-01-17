@@ -12,6 +12,28 @@ export const General = () => {
   return (
     <>
       <Typography variant="h5" component="h5" sx={{ mt: 4 }}>
+        Order information
+        <Grid container spacing={2}>
+          <Grid item xs={4}>
+            <TextFieldStandard
+              label={"Numero"}
+              value={value?.adress || ""}
+              disabled
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <TextFieldStandard
+              label={"Reference"}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <TextFieldStandard
+              label={"Description"}
+            />
+          </Grid>
+        </Grid>
+      </Typography>
+      <Typography variant="h5" component="h5" sx={{ mt: 4 }}>
         Company information
       </Typography>
       <Grid container spacing={2}>
@@ -29,7 +51,7 @@ export const General = () => {
               setValue(v);
             }}
             renderInput={(params) => (
-              <TextField {...params} label="Supplier Name" variant="standard" />
+              <TextField {...params} label="Supplier Name" variant="standard" required/>
             )}
             renderOption={(props, option) => {
               return (

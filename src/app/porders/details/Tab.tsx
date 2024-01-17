@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { DetailsTab } from "./components/DetailsTab";
 import { General } from './components/General';
+import { TVariableOrder } from '@/lib';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -39,7 +40,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function BasicTabs() {
+export default function OrderTabs() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

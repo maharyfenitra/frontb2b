@@ -3,9 +3,16 @@ import { DashboardGrid } from "@/lib";
 import { usePordersDetails } from "../hooks/usePordersDetails";
 import { GridApiCommunity } from "@mui/x-data-grid/internals";
 import { ButtonCreate } from "@/lib";
+import { TVariableOrder } from "@/lib";
+import { useRecoilValue } from "recoil";
+import { orderDetailsInformationState } from "../states/orderDetailsInformationState";
+import { GridCellEditStopParams, GridRowEditStopParams, MuiEvent } from "@mui/x-data-grid";
+
 
 export const DetailsTab = () => {
-  const { ref, rows, columns, addNewRow } = usePordersDetails();
+  const { ref, columns, addNewRow } = usePordersDetails();
+
+  const rows = useRecoilValue(orderDetailsInformationState).orderDetailsInput
 
   return (
     <>
@@ -18,6 +25,14 @@ export const DetailsTab = () => {
             | React.Ref<React.MutableRefObject<GridApiCommunity>>
             | undefined
         }
+        
+        onCellEditStop={(params: GridCellEditStopParams, event: MuiEvent) =>{
+          console.log(params)
+        }}
+
+        onRowEditStop={(params: GridRowEditStopParams, event: MuiEvent) =>{
+          console.log(params)
+        }}
       />
     </>
   );
