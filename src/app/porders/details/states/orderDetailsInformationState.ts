@@ -7,6 +7,6 @@ export const orderDetailsInformationState = atom<TVariableOrder>({
         description: "Description",
         reference: "Reference",
         supplierId: "Id",
-        orderDetailsInput: []
+        orderDetails: []
     }
 })

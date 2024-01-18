@@ -10,7 +10,7 @@ const PPayments = () => {
   return (
     <div>
       <Header title="Purchase Payments" />
-      <TopMenu handleClickCreate={() => push("ppayments/details")} />
+      <TopMenu handleClickCreate={() => push("suppliers/details")} />
       <DashboardGrid
         ref={
           ref as unknown as
