@@ -11,7 +11,7 @@ export const useCreateOrderMutation = () => {
 };
 
 export type TVariableOrderDetails = {
-  id?: string | undefined;
+  id?: string;
       itemId: string;
       label: string;
       qty: number;
@@ -22,5 +22,5 @@ export type TVariableOrder = {
   supplierId: string;
   reference: string;
   description: string;
-  orderDetailsInput: TVariableOrderDetails[]|[];
+  orderDetails: TVariableOrderDetails[];
 };

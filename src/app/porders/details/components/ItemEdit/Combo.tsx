@@ -5,7 +5,7 @@ import { useFindAllItemsQuery } from "@/lib";
 import { GridRenderEditCellParams } from "@mui/x-data-grid";
 import { TVariableOrderDetails } from "@/lib";
 
-export const ComboBox = ({ onChange, value }: { onChange: any, value: TVariableOrderDetails }) => {
+export const ComboBox = ({ onChange, value }: { onChange: (v: TVariableOrderDetails)=>void, value: TVariableOrderDetails }) => {
   
   const { data } = useFindAllItemsQuery();
 
@@ -21,7 +21,7 @@ export const ComboBox = ({ onChange, value }: { onChange: any, value: TVariableO
       value={value}
       
       onChange={(e, v) => {
-        onChange(v);
+        if(v)onChange(v as TVariableOrderDetails);
       }}
       renderInput={(params) => <TextField {...params} label="Choose Item" />}
       renderOption={(props, option) => {

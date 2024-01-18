@@ -5,7 +5,7 @@ import {
   GridRenderEditCellParams,
 } from "@mui/x-data-grid";
 import { useGridApiRef } from "@mui/x-data-grid";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 import { TVariableDashbord, MoreButton } from "@/lib";
 import { ComboBox } from "../components/ItemEdit/Combo";
@@ -22,13 +22,13 @@ export const usePordersDetails = (): TVariableDashbord & {
     useRecoilState<TVariableOrder>(orderDetailsInformationState);
 
   const addNewRow = () => {
-    let l = orderDetailsInformation.orderDetailsInput.length.toString();
+    let l = orderDetailsInformation?.orderDetails.length.toString();
     setOrderDetailsInformation({
       ...orderDetailsInformation,
-      orderDetailsInput: [
-        ...orderDetailsInformation.orderDetailsInput,
+      orderDetails: [
+        ...orderDetailsInformation.orderDetails,
         {
-          id: l,
+          id: l+1,
           label: "Empty",
           itemId: "",
           price: 0,
@@ -37,24 +37,40 @@ export const usePordersDetails = (): TVariableDashbord & {
       ],
     });
   };
-  const handleSelectItem=(id: string, ligne: TVariableOrderDetails) => {
-    setOrderDetailsInformation({
-      ...orderDetailsInformation,
-      orderDetailsInput:
-        orderDetailsInformation.orderDetailsInput.map((elt) => {
-          if (elt.id === id) {
+
+  const handleSelectItem= useCallback((rowId: string, item: TVariableOrderDetails) => {
+    console.log('ite', item)
+    setOrderDetailsInformation((prev)=>({
+      ...prev,
+      orderDetails:
+      prev.orderDetails.map((orderDetail) => {
+          if (orderDetail.id === rowId) {
             return {
-              itemId: ligne.id || "",
-              label: ligne.label,
-              price: ligne.price,
-              qty: 0,
-              id: id,
+              ...item,
+              itemId: rowId || "",
             };
           }
-          return elt;
+          return orderDetail;
         }),
-    });
+    }));
+  }, [])
+
+  const renderEditCell=(params: GridRenderEditCellParams) => {
+    return (
+      <ComboBox
+        onChange={(row: TVariableOrderDetails) => handleSelectItem(params.id as string, row)}
+        value={
+          orderDetailsInformation.orderDetails.find(
+            (el) => el.id === params.id
+          ) ||
+          orderDetailsInformation.orderDetails[
+            orderDetailsInformation.orderDetails.length - 1
+          ]
+        }
+      />
+    );
   }
+
   const columns: GridColDef[] = useMemo(()=>[
     {
       field: "id",
@@ -66,21 +82,7 @@ export const usePordersDetails = (): TVariableDashbord & {
       headerName: "Item",
       flex: 2,
       editable: true,
-      renderEditCell: (params: GridRenderEditCellParams) => {
-        return (
-          <ComboBox
-            onChange={(t: TVariableOrderDetails) => handleSelectItem(params.id as string,t )}
-            value={
-              orderDetailsInformation.orderDetailsInput.find(
-                (el) => el.id === params.id
-              ) ||
-              orderDetailsInformation.orderDetailsInput[
-                orderDetailsInformation.orderDetailsInput.length - 1
-              ]
-            }
-          />
-        );
-      },
+      renderEditCell: renderEditCell
     },
   
     {
@@ -116,13 +118,10 @@ export const usePordersDetails = (): TVariableDashbord & {
         return <MoreButton />;
       },
     },
-  ], [orderDetailsInformation]);
-  return { columns, rows: [], ref, addNewRow };
-};
+  ], [orderDetailsInformation, handleSelectItem]);
 
-type TypeDetails = {
-  id: string;
-  label: string;
-  qty: number;
-  price: number;
+
+
+
+  return { columns, rows: orderDetailsInformation.orderDetails || [], ref, addNewRow,  };
 };

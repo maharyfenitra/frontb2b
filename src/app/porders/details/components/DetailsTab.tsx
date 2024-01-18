@@ -10,16 +10,14 @@ import { GridCellEditStopParams, GridRowEditStopParams, MuiEvent } from "@mui/x-
 
 
 export const DetailsTab = () => {
-  const { ref, columns, addNewRow } = usePordersDetails();
-
-  const rows = useRecoilValue(orderDetailsInformationState).orderDetailsInput
+  const { ref, columns, addNewRow, rows } = usePordersDetails();
 
   return (
     <>
       <ButtonCreate label="Add new line" sx={{mb: 2}} onClick={()=> {addNewRow()}}/>
       <DashboardGrid
         columns={columns}
-        rows={rows}
+        rows={rows }
         ref={
           ref as unknown as
             | React.Ref<React.MutableRefObject<GridApiCommunity>>
