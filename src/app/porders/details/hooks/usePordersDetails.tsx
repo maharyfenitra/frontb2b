@@ -38,22 +38,23 @@ export const usePordersDetails = (): TVariableDashbord & {
     });
   };
 
-  const handleSelectItem= useCallback((rowId: string, item: TVariableOrderDetails) => {
-    console.log('ite', item)
+  const handleSelectItem= (paramId: string, item: any) => {
+  
     setOrderDetailsInformation((prev)=>({
       ...prev,
       orderDetails:
       prev.orderDetails.map((orderDetail) => {
-          if (orderDetail.id === rowId) {
+          if (orderDetail.id === paramId) {
             return {
+              ...orderDetail,
               ...item,
-              itemId: rowId || "",
+              id: paramId+"UIUI"
             };
           }
           return orderDetail;
         }),
     }));
-  }, [])
+  }
 
   const renderEditCell=(params: GridRenderEditCellParams) => {
     return (
@@ -71,7 +72,7 @@ export const usePordersDetails = (): TVariableDashbord & {
     );
   }
 
-  const columns: GridColDef[] = useMemo(()=>[
+  const columns: GridColDef[] = [
     {
       field: "id",
       headerName: "ID",
@@ -82,7 +83,13 @@ export const usePordersDetails = (): TVariableDashbord & {
       headerName: "Item",
       flex: 2,
       editable: true,
-      renderEditCell: renderEditCell
+      renderEditCell: renderEditCell,
+      renderCell: (params: GridRenderCellParams): React.ReactNode => {
+        console.log(params.row?.label)
+        return <>
+            {params.row?.label}
+        </>;
+      }
     },
   
     {
@@ -117,8 +124,7 @@ export const usePordersDetails = (): TVariableDashbord & {
       renderCell: (params: GridRenderCellParams): React.ReactNode => {
         return <MoreButton />;
       },
-    },
-  ], [orderDetailsInformation, handleSelectItem]);
+    }];
 
 
 
