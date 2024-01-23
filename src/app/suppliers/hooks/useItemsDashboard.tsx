@@ -1,37 +1,40 @@
 import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
-import { MoreButton } from "@/lib";
+import { MoreButton, useFindAllItemsQuery, useFindAllSuppliersQuery } from "@/lib";
 import { TVariableDashbord } from "@/lib";
 import { useGridApiRef } from "@mui/x-data-grid";
 
-export const usePInvoicesDashboard = (): TVariableDashbord=>{
+export const useItemsDashboard = (): TVariableDashbord=>{
 
     const ref = useGridApiRef();
-
+    const {data} = useFindAllSuppliersQuery()
     const columns: GridColDef[] = [
         {
           field: "id",
           headerName: "ID",
-          width: 100,
+          flex: 1
         },
         {
-          field: "label",
-          headerName: "Label",
-          width: 200,
+          field: "name",
+          headerName: "Name",
+          flex: 1
         },
         {
           field: "description",
           headerName: "Description",
-          width: 400,
+          flex: 2
         },
+
         {
-          field: "price",
-          headerName: "Price",
-          width: 100,
+          field: "adress",
+          headerName: "Adress",
+          flex: 1
         },
+    
         {
           field: "action",
           headerName: "Action",
-          width: 100,
+          flex: 0.5,
+          align: "right",
     
           renderCell: (params: GridRenderCellParams): React.ReactNode => {
             //console.log(params);
@@ -41,6 +44,6 @@ export const usePInvoicesDashboard = (): TVariableDashbord=>{
       ];
 
     return {
-        columns, ref, rows: []
+        columns, ref, rows: data || []
     }
 }

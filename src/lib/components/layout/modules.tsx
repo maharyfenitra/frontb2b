@@ -98,14 +98,14 @@ export const configModules: ModulesType[] = [
     link: "/users"
   },
   {
-    primary: "Customer",
+    primary: "Customers",
     icon: <SupportAgentIcon />,
     link: "/customers"
   },
   {
-    primary: "Supplier",
+    primary: "Suppliers",
     icon: <EvStationIcon />,
-    link: "/supplier"
+    link: "/suppliers"
   },
   {
     primary: "Currencies",

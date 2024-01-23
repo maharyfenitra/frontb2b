@@ -2,11 +2,15 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useFindAllItemsQuery } from "@/lib";
-import { GridRenderEditCellParams } from "@mui/x-data-grid";
 import { TVariableOrderDetails } from "@/lib";
 
-export const ComboBox = ({ onChange, value }: { onChange: (v: TVariableOrderDetails)=>void, value: TVariableOrderDetails }) => {
-  
+export const ComboBox = ({
+  onChange,
+  value,
+}: {
+  onChange: (v: TVariableOrderDetails) => void;
+  value: TVariableOrderDetails;
+}) => {
   const { data } = useFindAllItemsQuery();
 
   return (
@@ -19,9 +23,8 @@ export const ComboBox = ({ onChange, value }: { onChange: (v: TVariableOrderDeta
       }}
       sx={{ width: "100%" }}
       value={value}
-      
-      onChange={(e, v) => {
-        if(v)onChange(v as TVariableOrderDetails);
+      onChange={(e, selectedItem) => {
+        if (selectedItem) onChange(selectedItem as TVariableOrderDetails);
       }}
       renderInput={(params) => <TextField {...params} label="Choose Item" />}
       renderOption={(props, option) => {
