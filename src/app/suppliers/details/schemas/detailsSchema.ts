@@ -42,6 +42,11 @@ export const detailsItemSchema: RJSFSchema = {
       title: "Nif:",
     },
 
+    stat: {
+      type: "string",
+      title: "Stat:",
+    },
+
     firstName: {
       type: "string",
       title: "Contact First Name:",
@@ -105,6 +110,11 @@ export const uiSchema: UiSchema = {
   },
 
   nif: {
+    "ui:classNames": "supplier-class-city",
+    "ui:field": "SupplierInput",
+  },
+
+  stat: {
     "ui:classNames": "supplier-class-city",
     "ui:field": "SupplierInput",
   },

@@ -5,3 +5,4 @@ export * from "./useFindAllItemsQuery";
 export * from "./useFindAllSupplierQuery";
 export * from "./useCreateOrderMutation";
 export * from "./useFindAllOrdersQuery";
+export * from "./useCreateSupplierMutation";

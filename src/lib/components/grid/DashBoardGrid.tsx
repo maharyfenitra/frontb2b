@@ -10,20 +10,20 @@ export const DashboardGrid = React.forwardRef<
   DashboardGridProps
 >((props, ref) => {
   return (<DataGrid
-        sx={{ height: 400, width: "100%" }}
+        sx={{ height: 600, width: "100%" }}
         rows={props.rows}
         columns={props.columns}
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 5,
+              pageSize: 20,
             },
           },
         }}
         apiRef={
           ref as unknown as React.MutableRefObject<GridApiCommunity> | undefined
         }
-        pageSizeOptions={[5]}
+        pageSizeOptions={[10]}
         checkboxSelection
         disableRowSelectionOnClick
       />
