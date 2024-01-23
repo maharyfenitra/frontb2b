@@ -1,12 +1,13 @@
 "use client";
 import { Header, DashboardGrid, TopMenu } from "@/lib";
-import { usePInvoicesDashboard} from "./hooks/usePInvoicesDashboard";
+import { useItemsDashboard} from "./hooks/useItemsDashboard";
 import { GridApiCommunity } from "@mui/x-data-grid/internals";
 import { useRouter } from "next/navigation";
 
 const PPayments = () => {
-  const { ref, columns, rows } = usePInvoicesDashboard();
+  const { ref, columns, rows } = useItemsDashboard();
   const { push } = useRouter();
+
   return (
     <div>
       <Header title="Purchase Payments" />

@@ -48,7 +48,7 @@ export const usePordersDetails = (): TVariableDashbord & {
             return {
               ...orderDetail,
               ...item,
-              id: paramId+"UIUI"
+              id: paramId
             };
           }
           return orderDetail;

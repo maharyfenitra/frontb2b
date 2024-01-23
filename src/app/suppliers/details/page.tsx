@@ -36,7 +36,7 @@ const Details = () => {
   };
   return (
     <div>
-      <Header title="Item Details"  backUrl="/items"/>
+      <Header title="Item Details"  backUrl="/suppliers"/>
       {isSuccess && <Alert severity="success">Item saved.</Alert>}
       <GenericForm
         schema={detailsItemSchema}

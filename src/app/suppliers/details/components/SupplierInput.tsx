@@ -1,9 +1,8 @@
 import { FieldProps } from "@rjsf/utils";
 import { TextFieldStandard } from "@/lib";
 
-export const ItemInput: React.FC<FieldProps> = (props: FieldProps) => {
+export const SupplierInput: React.FC<FieldProps> = (props: FieldProps) => {
 
-  console.log(props)
   const handleChange = (e : any) => {
     props.onChange(e?.target?.value)
   };
