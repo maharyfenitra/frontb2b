@@ -1,24 +1,24 @@
 import { GraphqlModelQuery } from "@/lib";
-export class FindAllCustomersQuery implements GraphqlModelQuery {
-  readonly query = `query FindAllCustomer {
-    findAllCustomers{
+export class FindAllSuppliersQuery implements GraphqlModelQuery {
+  readonly query = `query FindAllSuppliers {
+    findAllSuppliers {
       id
       firstName
       lastName
       name
-      mail
       phoneNumber
-      description
+      mail
       adress
-      city
       area
+      city
+      description
       stat
       nif
       contactMail
       contactPhoneNumber
       contactPost
     }
-  }`;
-
-cacheKey = "findAllCustomers"
+  }
+  `;
+cacheKey = "findAllSuppliers"
 }

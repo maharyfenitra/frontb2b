@@ -8,9 +8,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Typography from "@mui/material/Typography";
 
+
 const ITEM_HEIGHT = 48;
 
-export function MoreButton() {
+export function MoreButton(props: MoreButtonProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -49,13 +50,13 @@ export function MoreButton() {
           },
         }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={props.handleEdit}>
           <ListItemIcon>
             <EditIcon fontSize="small" />
           </ListItemIcon>
           <Typography variant="inherit">Edit</Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={props.handleDelete}>
           <ListItemIcon>
             <DeleteIcon fontSize="small" />
           </ListItemIcon>
@@ -64,4 +65,9 @@ export function MoreButton() {
       </Menu>
     </div>
   );
+}
+
+type MoreButtonProps = {
+  handleEdit?: React.MouseEventHandler<HTMLLIElement> | undefined;
+  handleDelete?: React.MouseEventHandler<HTMLLIElement> | undefined;
 }

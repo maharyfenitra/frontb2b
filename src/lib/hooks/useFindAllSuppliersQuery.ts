@@ -1,5 +1,5 @@
 import { useGenericGraphqlQuery } from "@/lib";
-import { FindAllSuppliersQuery } from "../queries/FindAllCustomersQuery";
+import { FindAllSuppliersQuery } from "../queries/FindAllSuppliersQuery";
 
 export const useFindAllSuppliersQuery = () => {
   return useGenericGraphqlQuery<FindAllSuppliersQuery, TData>(
