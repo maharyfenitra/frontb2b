@@ -2,8 +2,11 @@ import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { MoreButton } from "@/lib";
 import { TVariableDashbord } from "@/lib";
 import { useGridApiRef } from "@mui/x-data-grid";
+import { useFindAllCustomersQuery } from "@/lib";
 
 export const useCustomersDashboard = (): TVariableDashbord=>{
+
+  const {data} = useFindAllCustomersQuery();
 
     const ref = useGridApiRef();
 

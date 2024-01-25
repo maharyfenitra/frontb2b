@@ -1,7 +1,7 @@
 import { RJSFSchema, UiSchema } from "@rjsf/utils";
 import { SupplierInput } from "../components/SupplierInput";
 
-export const detailsItemSchema: RJSFSchema = {
+export const detailsSuppliersSchema: RJSFSchema = {
   type: "object",
   required: ["name", "adress", "description"],
   properties: {
