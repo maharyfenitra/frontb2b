@@ -1,6 +1,6 @@
-import { useFetch } from "./useFetch";
+import { useFetch } from "../useFetch";
 import { useMutation } from "@tanstack/react-query";
-import { GraphqlModelMutation } from "../types";
+import { GraphqlModelMutation } from "../../types";
 
 export const useGenericGraphqlMutation = <T extends GraphqlModelMutation, TVariables>(graphqlMutation: T) => {
     const { fetchData } = useFetch(graphqlMutation.mutation);

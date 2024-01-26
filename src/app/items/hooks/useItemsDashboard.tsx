@@ -2,18 +2,31 @@ import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { useGridApiRef } from "@mui/x-data-grid";
 import { useFindAllItemsQuery } from "@/lib";
 import { TVariableDashbord, MoreButton } from "@/lib";
+import { useRouter } from "next/navigation";
 
-
-export const useItemsDashboard = (): TVariableDashbord => {
+export const useItemsDashboard = (): TVariableDashbord & {
+  handleEdit: React.MouseEventHandler<HTMLButtonElement>;
+} => {
   const { data: rows } = useFindAllItemsQuery();
+  const { push } = useRouter();
   const ref = useGridApiRef();
+  const editSupplier = (id: string) => {
+    push(`items/details/${id}`);
+  };
 
+  const handleEdit = () => {
+    const selectedRow = ref.current.getSelectedRows();
+    if (selectedRow.size === 1) {
+      const id = Array.from(selectedRow)[0][1].id;
+      editSupplier(id);
+    }
+  };
 
   const columns: GridColDef[] = [
     {
       field: "id",
       headerName: "ID",
-     flex: 1,
+      flex: 1,
     },
     {
       field: "label",
@@ -38,10 +51,11 @@ export const useItemsDashboard = (): TVariableDashbord => {
       align: "right",
 
       renderCell: (params: GridRenderCellParams): React.ReactNode => {
-        //console.log(params);
-        return <MoreButton />;
+        return (
+          <MoreButton handleEdit={() => editSupplier(params.id as string)} />
+        );
       },
     },
   ];
-  return { columns, rows: rows||[], ref };
+  return { columns, rows: rows || [], ref, handleEdit };
 };

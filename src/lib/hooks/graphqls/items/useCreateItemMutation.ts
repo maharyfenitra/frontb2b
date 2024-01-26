@@ -1,16 +1,16 @@
-import { CreateNewCustomerMutation } from "../mutation/CreateNewCustomerMutation "; 
-import { useGenericGraphqlMutation } from "./useGenericGraphqlMutation";
+import { CreateNewItemMutation } from "../../../mutation/CreateNewItemMutation"; 
+import { useGenericGraphqlMutation } from "../useGenericGraphqlMutation";
 
-export const useCreateCustomerMutation = () => {
+export const useCreateItemMutation = () => {
   const mutation = useGenericGraphqlMutation<
-  CreateNewCustomerMutation,
-    TVariableCustomer
-  >(new CreateNewCustomerMutation());
+  CreateNewItemMutation,
+    TVariableItem
+  >(new CreateNewItemMutation());
 
   return mutation;
 };
 
-export type TVariableCustomer = {
+export type TVariableItem = {
   id?: string | undefined;
   firstName: string;
   lastName: string;

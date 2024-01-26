@@ -1,5 +1,5 @@
-import { CreateNewSupplierMutation } from "../mutation/CreateNewSupplierMutation ";
-import { useGenericGraphqlMutation } from "./useGenericGraphqlMutation";
+import { CreateNewSupplierMutation } from "../../../mutation/CreateNewSupplierMutation ";
+import { useGenericGraphqlMutation } from "../useGenericGraphqlMutation";
 
 export const useCreateSupplierMutation = () => {
   const mutation = useGenericGraphqlMutation<

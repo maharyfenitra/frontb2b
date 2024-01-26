@@ -1,5 +1,5 @@
-import { UpdateSupplierMutation } from "../mutation/UpdateSupplierMutation";
-import { useGenericGraphqlMutation } from "./useGenericGraphqlMutation";
+import { UpdateSupplierMutation } from "../../../mutation/UpdateSupplierMutation";
+import { useGenericGraphqlMutation } from "../useGenericGraphqlMutation";
 import { TVariableSupplier } from "@/lib";
 
 export const useUpdateSupplierMutation = () => {

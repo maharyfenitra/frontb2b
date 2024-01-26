@@ -1,6 +1,6 @@
-import { useFetch } from "./useFetch";
+import { useFetch } from "../useFetch";
 import { useQuery } from "@tanstack/react-query";
-import { GraphqlModelQuery } from "../types";
+import { GraphqlModelQuery } from "../../types";
 import { UseQueryResult } from "@tanstack/react-query";
 
 export const useGenericGraphqlQuery = <T extends GraphqlModelQuery, TData>(

@@ -1,5 +1,5 @@
 import { useGenericGraphqlQuery } from "@/lib";
-import { FindOneCustomerQuery } from "../queries/FindOneCustomerQuery";
+import { FindOneCustomerQuery } from "../../../queries/FindOneCustomerQuery";
 import { TVariableCustomer } from "@/lib";
 
 export const useFindOneCustomerQuery = (id: string) => {

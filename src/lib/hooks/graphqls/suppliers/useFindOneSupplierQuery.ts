@@ -1,5 +1,5 @@
 import { useGenericGraphqlQuery } from "@/lib";
-import { FindOneSupplierQuery } from "../queries/FindOneSupplierQuery";
+import { FindOneSupplierQuery } from "../../../queries/FindOneSupplierQuery";
 import { TVariableSupplier } from "@/lib";
 
 export const useFindOneSupplierQuery = (id: string) => {
