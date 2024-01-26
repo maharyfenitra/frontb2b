@@ -8,7 +8,7 @@ export const useFindAllCustomersQuery = () => {
       return {
         isSuccess: data.isSuccess,
         isLoading: data.isLoading,
-        data: data?.data?.findAllSuppliers,
+        data: data?.data?.findAllCustomers,
       };
     }
   );

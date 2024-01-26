@@ -10,3 +10,6 @@ export * from "./useFindAllCustomersQuery";
 export * from "./useCreateCustomerMutation";
 export * from "./useFindOneSupplierQuery";
 export * from "./useUpdateSupplierMutation";
+export * from "./useCreateCustomerMutation";
+export * from "./useFindOneCustomerQuery";
+export * from "./useUpdateCustomerMutation";

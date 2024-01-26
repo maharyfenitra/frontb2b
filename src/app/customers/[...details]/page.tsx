@@ -7,44 +7,14 @@ import { GenericForm } from "@/lib";
 import SaveIcon from "@mui/icons-material/Save";
 import Button from "@mui/material/Button";
 import { IChangeEvent } from "@rjsf/core";
-import { FormEvent, useState } from "react";
 import Alert from "@mui/material/Alert";
-import { useCreateSupplierMutation, TVariableSupplier } from "@/lib";
+import { useCustomerData } from "./hooks/useCustomerData";
 
 const Details = () => {
-  const [formData, setFormData] = useState<TVariableSupplier>({
-    firstName: "",
-    lastName: "",
-    name: "",
-    mail: "",
-    adress: "",
-    city: "",
-    area: "",
-    stat: "",
-    nif: "",
-    description: "",
-    contactMail: "",
-    contactPost: "",
-    contactPhoneNumber: "",
-    phoneNumber: "",
-  });
-  const { mutate, isSuccess } = useCreateSupplierMutation();
-  const onSubmit = (
-    data: IChangeEvent<any, any, any>,
-    event: FormEvent<any>
-  ) => {
-    setFormData((prev) => {
-      return {
-        ...prev,
-        ...data.formData.title,
-      };
-    });
-    
-    mutate(data.formData);
-  };
+  const { onSubmit, isSuccess, formData } = useCustomerData();
   return (
     <div>
-      <Header title="Customer Details" backUrl="/suppliers" />
+      <Header title="Customer Details" backUrl="/customers" />
       {isSuccess && <Alert severity="success">Item saved.</Alert>}
       <GenericForm
         schema={detailsCustomersSchema}

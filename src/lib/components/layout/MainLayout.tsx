@@ -19,6 +19,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import Container from "@mui/material/Container";
 import { RecoilRoot } from "recoil";
+import { createTheme as customTheme } from "@/lib";
 
 function Copyright(props: any) {
   return (
@@ -98,7 +99,7 @@ export const MainLayout = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={customTheme()}>
       <RecoilRoot>
         <Box sx={{ display: "flex" }}>
           <CssBaseline />

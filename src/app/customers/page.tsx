@@ -4,13 +4,14 @@ import { useCustomersDashboard } from "./hooks/useCustomersDashboard";
 import { GridApiCommunity } from "@mui/x-data-grid/internals";
 import { useRouter } from "next/navigation";
 
-const Currencies = () => {
-  const { ref, columns, rows } = useCustomersDashboard();
+const Customer = () => {
+  const { ref, columns, rows, handleEdit } = useCustomersDashboard();
+  
   const { push } = useRouter();
   return (
     <div>
       <Header title="Customers" />
-      <TopMenu handleClickCreate={() => push("customers/details")} />
+      <TopMenu handleClickCreate={() => push("customers/details")} handleClickEdit={handleEdit}/>
       <DashboardGrid
         ref={
           ref as unknown as
@@ -24,4 +25,4 @@ const Currencies = () => {
   );
 };
 
-export default Currencies;
+export default Customer;
