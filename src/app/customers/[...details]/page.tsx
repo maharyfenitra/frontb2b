@@ -8,10 +8,10 @@ import SaveIcon from "@mui/icons-material/Save";
 import Button from "@mui/material/Button";
 import { IChangeEvent } from "@rjsf/core";
 import Alert from "@mui/material/Alert";
-import { useCustomerData } from "./hooks/useCustomerData";
+import { useDetails } from "./hooks/useDetails";
 
 const Details = () => {
-  const { onSubmit, isSuccess, formData } = useCustomerData();
+  const { onSubmit, isSuccess, formData } = useDetails();
   return (
     <div>
       <Header title="Customer Details" backUrl="/customers" />

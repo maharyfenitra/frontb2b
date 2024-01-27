@@ -8,6 +8,7 @@ export class FindAllItemsQuery implements GraphqlModelQuery {
       price
       createdAt
       updateAt
+      code
     }
   }`;
 cacheKey = "findAllItems"

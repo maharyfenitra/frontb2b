@@ -1,4 +1,4 @@
-import { CreateNewCustomerMutation } from "../../../mutation/CreateNewCustomerMutation "; 
+import { CreateNewCustomerMutation } from "../../../mutation/CreateNewCustomerMutation"; 
 import { useGenericGraphqlMutation } from "../useGenericGraphqlMutation";
 
 export const useCreateCustomerMutation = () => {

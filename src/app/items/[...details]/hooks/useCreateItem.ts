@@ -1,40 +1,28 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import {
-  useCreateItemMutation,
-  TVariableItem,
-} from "@/lib";
+import { useCreateItemMutation, TVariableItem } from "@/lib";
 
 export const useCreateItem = () => {
-    const { push } = useRouter();
-    const {
-        mutate: createNewItem,
-        isSuccess: isCreationSuccess,
-        data: createdItem,
-      } = useCreateItemMutation();
+  const { push } = useRouter();
+  const {
+    mutate: createNewItem,
+    isSuccess: isCreationSuccess,
+    data: createdItem,
+  } = useCreateItemMutation();
 
-      useEffect(() => {
-        if (isCreationSuccess) {
-          push(`/Items/details/${createdItem.createItem.id}`);
-        }
-      }, [isCreationSuccess]);
+  useEffect(() => {
+    if (isCreationSuccess) {
+      push(`/items/details/${createdItem.createItem.id}`);
+    }
+  }, [isCreationSuccess]);
 
-      return {createNewItem, isCreationSuccess, formDataDefaultValue}
-}
+  return { createNewItem, isCreationSuccess, formDataDefaultValue };
+};
 
 const formDataDefaultValue: TVariableItem = {
-    firstName: "",
-    lastName: "",
-    name: "",
-    mail: "",
-    adress: "",
-    city: "",
-    area: "",
-    stat: "",
-    nif: "",
-    description: "",
-    contactMail: "",
-    contactPost: "",
-    contactPhoneNumber: "",
-    phoneNumber: "",
-  };
+  code: "",
+  label: "",
+  description: "",
+  price: 0,
+  userId: "657afc6418f168242f388b3c",
+};

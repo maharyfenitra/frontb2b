@@ -1,30 +1,33 @@
 import { useParams } from "next/navigation";
 import { FormEvent } from "react";
 import { IChangeEvent } from "@rjsf/core";
-import { useCreateSupplier } from "./useCreateSupplier";
-import { useUpdateSupplier } from "./useUpdateSupplier";
+import { useCreateItem } from "./useCreateItem";
+import { useUpdateItem } from "./useUpdateItem";
 
-export const useSupplierData = () => {
+export const useDetails = () => {
   const params = useParams();
   const id = params?.details[1];
 
-  const { createNewSupplier, isCreationSuccess, formDataDefaultValue } =
-    useCreateSupplier();
-  const { updateSupplier, formData } = useUpdateSupplier(id);
+  const { createNewItem, isCreationSuccess, formDataDefaultValue } =
+    useCreateItem();
+  const { updateItem, formData } = useUpdateItem(id as string);
 
   const onSubmit = (
     data: IChangeEvent<any, any, any>,
     event: FormEvent<any>
   ) => {
+    
     if (id) {
-      updateSupplier({
-        updateSupplierInput: {
+      console.log(data.formData)
+      updateItem({
+        updateItemInput: {
           ...data.formData,
         },
       });
       return;
     }
-    createNewSupplier(data.formData);
+    
+    createNewItem(data.formData);
   };
 
   const onChange = (e: IChangeEvent) => {};

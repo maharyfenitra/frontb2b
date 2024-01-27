@@ -1,28 +1,17 @@
 import { GraphqlModelQuery } from "@/lib";
 export class FindOneItemQuery implements GraphqlModelQuery {
-  readonly query = `query FindOneCustomer($id: String!) {
-    findOneCustomer(id: $id){
+  readonly query = `query FindOneItem($id: String!){
+    findOneItem(id: $id){
       id
-      firstName
-      lastName
-      firstName
-      name
-      mail
-      phoneNumber
+      label
       description
-      adress
-      city
-      area
-      stat
-      nif
-      contactMail
-      contactPhoneNumber
-      contactPost
+      price
+      code
     }
   }
   `;
 variables?: {id: string};
-cacheKey = "findOneCustomer"
+cacheKey = "findOneItem"
 constructor(id: string){
     this.variables = {id}
 }

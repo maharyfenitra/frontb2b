@@ -4,14 +4,22 @@ import { ItemPrice } from "../components/ItemPrice";
 
 export const detailsItemSchema: RJSFSchema = {
   type: "object",
-  required: ["title","description", "price"],
+  required: ["code", "description", "price", "label"],
   properties: {
-    title: { type: "string", title: "Title:", require: true},
+    label: { type: "string", title: "Label:", require: true },
+    
+    code: {
+      type: "string",
+      title: "Code:",
+      require: true,
+    },
+
     description: {
       type: "string",
       title: "Description:",
-      require: true
+      require: true,
     },
+
     price: {
       type: "number",
       title: "Price:",
@@ -20,11 +28,14 @@ export const detailsItemSchema: RJSFSchema = {
 };
 
 export const uiSchema: UiSchema = {
-  
-  title: {
+  label: {
     "ui:classNames": "custom-class-name",
     "ui:field": "ItemInput",
-  
+  },
+
+  code: {
+    "ui:classNames": "custom-class-name",
+    "ui:field": "ItemInput",
   },
   description: {
     "ui:classNames": "custom-class-description",
@@ -34,15 +45,13 @@ export const uiSchema: UiSchema = {
   price: {
     "ui:classNames": "custom-class-description",
     "ui:field": "ItemPrice",
-    "ui:option" : {
-      type: "number"
-    }
-  }
-  
-  
+    "ui:option": {
+      type: "number",
+    },
+  },
 };
 
 export const fields = {
   ItemInput,
-  ItemPrice
+  ItemPrice,
 };

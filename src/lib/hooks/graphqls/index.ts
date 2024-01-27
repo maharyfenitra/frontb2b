@@ -16,4 +16,4 @@ export * from "./customers/useUpdateCustomerMutation";
 export * from "./items/useCreateItemMutation"
 export * from "./items/useFindAllItemsQuery";
 export * from "./items/useFindOneItemQuery";
-export * from "./items/useUpdateCustomerMutation"
+export * from "./items/useUpdateItemMutation"

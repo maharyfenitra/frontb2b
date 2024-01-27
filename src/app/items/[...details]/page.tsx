@@ -6,38 +6,17 @@ import { fields } from "./schemas/detailsSchema";
 import { GenericForm } from "@/lib";
 import SaveIcon from "@mui/icons-material/Save";
 import Button from "@mui/material/Button";
-import { useCreateItemMutation } from "./hooks/useCreateItemMutation";
 import { IChangeEvent } from "@rjsf/core";
-import { FormEvent , useState} from "react";
 import Alert from '@mui/material/Alert';
+import { useDetails } from "./hooks/useDetails";
 
 const Details = () => {
-  const [formData, setFormData] = useState<FormDataType>({
-    description: "Description of Item",
-    title: "New Item",
-    price: 0,
-  });
-  const { mutate, isSuccess } = useCreateItemMutation();
-  const onSubmit = (
-    data: IChangeEvent<any, any, any>,
-    event: FormEvent<any>
-  ) => {
-    setFormData({
-      title: data.formData.title,
-      description: data.formData.description,
-      price: data.formData.price
-    })
-    mutate({
-      userId: "userTest",
-      label: data.formData.title,
-      description: data.formData.description,
-      price: data.formData.price
-    });
-  };
+  const {onSubmit, formData} = useDetails();
+  
   return (
     <div>
       <Header title="Item Details"  backUrl="/items"/>
-      {isSuccess && <Alert severity="success">Item saved.</Alert>}
+      {<Alert severity="success">Item saved.</Alert>}
       <GenericForm
         schema={detailsItemSchema}
         uiSchema={{

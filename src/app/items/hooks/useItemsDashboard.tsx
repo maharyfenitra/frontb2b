@@ -24,8 +24,8 @@ export const useItemsDashboard = (): TVariableDashbord & {
 
   const columns: GridColDef[] = [
     {
-      field: "id",
-      headerName: "ID",
+      field: "code",
+      headerName: "Code Item",
       flex: 1,
     },
     {

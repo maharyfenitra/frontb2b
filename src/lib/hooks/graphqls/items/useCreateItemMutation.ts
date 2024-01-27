@@ -1,9 +1,9 @@
-import { CreateNewItemMutation } from "../../../mutation/CreateNewItemMutation"; 
+import { CreateNewItemMutation } from "../../../mutation/CreateNewItemMutation";
 import { useGenericGraphqlMutation } from "../useGenericGraphqlMutation";
 
 export const useCreateItemMutation = () => {
   const mutation = useGenericGraphqlMutation<
-  CreateNewItemMutation,
+    CreateNewItemMutation,
     TVariableItem
   >(new CreateNewItemMutation());
 
@@ -12,18 +12,9 @@ export const useCreateItemMutation = () => {
 
 export type TVariableItem = {
   id?: string | undefined;
-  firstName: string;
-  lastName: string;
-  name: string;
-  mail: string;
-  adress: string;
-  city: string;
-  area: string;
-  stat: string;
-  nif: string;
-  phoneNumber: string;
+  code: string;
+  label: string;
   description: string;
-  contactMail: string;
-  contactPhoneNumber: string;
-  contactPost: string;
+  price: number;
+  userId: string;
 };

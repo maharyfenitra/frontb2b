@@ -1,16 +1,16 @@
 import { useParams } from "next/navigation";
 import { FormEvent } from "react";
 import { IChangeEvent } from "@rjsf/core";
-import { useCreateItem } from "./useCreateItem";
-import { useUpdateItem } from "./useUpdateItem";
+import { useCreateCustomer } from "./useCreateCustomer";
+import { useUpdateCustomer } from "./useUpdateCustomer";
 
-export const useItemData = () => {
+export const useDetails = () => {
   const params = useParams();
   const id = params?.details[1];
 
-  const { createNewItem, isCreationSuccess, formDataDefaultValue } =
-    useCreateItem();
-  const { updateItem, formData } = useUpdateItem(id as string);
+  const { createNewCustomer, isCreationSuccess, formDataDefaultValue } =
+    useCreateCustomer();
+  const { updateCustomer, formData } = useUpdateCustomer(id as string);
 
   const onSubmit = (
     data: IChangeEvent<any, any, any>,
@@ -18,15 +18,15 @@ export const useItemData = () => {
   ) => {
     
     if (id) {
-      updateItem({
-        updateItemInput: {
+      updateCustomer({
+        updateCustomerInput: {
           ...data.formData,
         },
       });
       return;
     }
     
-    createNewItem(data.formData);
+    createNewCustomer(data.formData);
   };
 
   const onChange = (e: IChangeEvent) => {};
