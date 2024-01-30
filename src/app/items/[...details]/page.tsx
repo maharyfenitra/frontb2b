@@ -9,10 +9,12 @@ import Button from "@mui/material/Button";
 import { IChangeEvent } from "@rjsf/core";
 import Alert from '@mui/material/Alert';
 import { useDetails } from "./hooks/useDetails";
+import { useRef } from "react";
+import Form from "@rjsf/core";
 
 const Details = () => {
   const {onSubmit, formData} = useDetails();
-  
+  const ref = useRef<Form>();
   return (
     <div>
       <Header title="Item Details"  backUrl="/items"/>
@@ -40,13 +42,12 @@ const Details = () => {
           </Button>
         }
         formData={formData}
+        onBlur={()=>{console.log("blur")}}
+
+        /*ref={ref as Ref<Form<any, any, any>>}*/
       />
     </div>
   );
 };
-type FormDataType = {
-  description: string;
-  title: string;
-  price: number;
-};
+
 export default Details;

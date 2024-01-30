@@ -1,11 +1,8 @@
 "use client";
 import { DashboardGrid } from "@/lib";
-import { usePordersDetails } from "../hooks/usePordersDetails";
+import { usePordersDetails } from "../../hooks/usePordersDetails";
 import { GridApiCommunity } from "@mui/x-data-grid/internals";
 import { ButtonCreate } from "@/lib";
-import { TVariableOrder } from "@/lib";
-import { useRecoilValue } from "recoil";
-import { orderDetailsInformationState } from "../states/orderDetailsInformationState";
 import { GridCellEditStopParams, GridRowEditStopParams, MuiEvent } from "@mui/x-data-grid";
 
 

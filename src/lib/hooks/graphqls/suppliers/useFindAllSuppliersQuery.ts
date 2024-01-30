@@ -14,18 +14,22 @@ export const useFindAllSuppliersQuery = () => {
   );
 };
 
-type TypeSupplier = {
-  id: string;
-    name: string;
-    description: string;
-    adress: string;
-    city: string;
-    area: string;
-    stat: string;
-    nif: string;
-    firstName: string;
-    lastName: string;
-    mail: string;
+export type TypeSupplier = {
+  id?: string;
+  firstName: string;
+  lastName: string;
+  name: string;
+  phoneNumber: string;
+  mail: string;
+  adress: string;
+  area: string;
+  city: string;
+  description: string;
+  stat: string;
+  nif: string;
+  contactMail: string;
+  contactPhoneNumber: string;
+  contactPost: string;
 }
 
 type TData = {

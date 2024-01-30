@@ -1,11 +1,9 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { DetailsTab } from "./components/DetailsTab";
-import { General } from './components/General';
-import { TVariableOrder } from '@/lib';
+import { DetailsTab } from "../containers/details/DetailsTab";
+import { GeneralsTab } from '../containers/general/GeneralsTab';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -40,7 +38,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function OrderTabs() {
+export  const OrderTabs = () => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -52,11 +50,11 @@ export default function OrderTabs() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="purchase orders information">
           <Tab label="General" {...a11yProps(0)} />
-          <Tab label="Details" {...a11yProps(1)} />
+          <Tab label="Details" {...a11yProps(1)} disabled={true}/>
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <General/>
+        <GeneralsTab/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <DetailsTab/>

@@ -1,10 +1,12 @@
 "use client";
-import { FormProps } from "@rjsf/core";
-import Form from "@rjsf/mui";
+import  React from "react";
+import Form, { FormProps } from "@rjsf/core";
+import  MuiForm from "@rjsf/mui";
 import { ObjectFieldTemplateProps } from "@rjsf/utils";
 import { Grid } from "@mui/material";
+import { Ref } from "react";
 
-export const GenericForm = (props: FormProps & { menu: React.ReactNode }): React.ReactNode => {
+export const GenericForm = React.forwardRef<Form, FormProps & { menu: React.ReactNode }>((props, ref): React.ReactNode => {
 
   const ObjectFieldTemplate = (object: ObjectFieldTemplateProps) => {
     return (
@@ -26,14 +28,17 @@ export const GenericForm = (props: FormProps & { menu: React.ReactNode }): React
   };
 
   return (
-    <Form
+    <MuiForm
       {...props}
       uiSchema={{
         ...props.uiSchema,
         "ui:ObjectFieldTemplate": ObjectFieldTemplate,
       }}
+      ref={ref as Ref<Form<any, any, any>> | undefined}
     >
       <></>
-    </Form>
+    </MuiForm>
   );
-};
+});
+
+GenericForm.displayName = "GenericForm";
