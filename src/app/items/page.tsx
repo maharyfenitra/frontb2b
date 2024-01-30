@@ -7,16 +7,14 @@ import { GridApiCommunity } from "@mui/x-data-grid/internals";
 
 const Items = () => {
   const { createItemEvent } = useTopMenuAction();
-  const { ref, rows, columns } = useItemsDashboard();
+  const { ref, rows, columns, handleEdit } = useItemsDashboard();
 
   return (
     <>
       <Header title={"Items"}/>
       <TopMenu
         handleClickCreate={createItemEvent}
-        handleClickEdit={() => {
-          console.log(ref.current.getSelectedRows());
-        }}
+        handleClickEdit={handleEdit}
       />
       <DashboardGrid
         columns={columns}

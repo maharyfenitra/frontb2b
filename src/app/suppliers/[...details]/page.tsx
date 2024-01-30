@@ -7,10 +7,10 @@ import { GenericForm } from "@/lib";
 import SaveIcon from "@mui/icons-material/Save";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
-import { useSupplierData } from "./hooks/useSupplierData";
+import { useDetails } from "./hooks/useDetails";
 
 const Details = () => {
-  const { isSuccess, onSubmit, formData, onChange } = useSupplierData();
+  const { isSuccess, onSubmit, formData, onChange } = useDetails();
 
   return (
     <div>

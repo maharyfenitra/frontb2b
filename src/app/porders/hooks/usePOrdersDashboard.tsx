@@ -3,42 +3,56 @@ import { MoreButton } from "@/lib";
 import { TVariableDashbord } from "@/lib";
 import { useGridApiRef } from "@mui/x-data-grid";
 import { useFindAllOrdersQuery, useFindAllItemsQuery } from "@/lib";
+import { useRouter } from "next/navigation";
 
-export const usePOrdersDashboard = (): TVariableDashbord => {
+export const usePOrdersDashboard = (): TVariableDashbord & {
+  handleEdit: React.MouseEventHandler<HTMLButtonElement>;
+} => {
   const { data } = useFindAllOrdersQuery();
-  const { data: items } = useFindAllItemsQuery();
 
   const ref = useGridApiRef();
+  const { push } = useRouter();
+
+  const editPorder = (id: string) => {
+    push(`porders/details/${id}`);
+  };
+
+  const handleEdit = () => {
+    const selectedRow = ref.current.getSelectedRows();
+    if (selectedRow.size === 1) {
+      const id = Array.from(selectedRow)[0][1].id;
+      editPorder(id);
+    }
+  };
 
   const columns: GridColDef[] = [
     {
       field: "id",
       headerName: "ID",
-      width: 100,
+      flex: 1,
     },
     {
-      field: "label",
-      headerName: "Label",
-      width: 200,
+      field: "reference",
+      headerName: "Reference",
+      flex: 2,
     },
     {
       field: "description",
       headerName: "Description",
-      width: 400,
+      flex: 4,
     },
     {
       field: "price",
       headerName: "Price",
-      width: 100,
+      flex: 1,
     },
     {
       field: "action",
       headerName: "Action",
-      width: 100,
+      flex: 1,
 
       renderCell: (params: GridRenderCellParams): React.ReactNode => {
-        //console.log(params);
-        return <MoreButton />;
+        return <MoreButton handleEdit={() => editPorder(params.id as string)}/>;
       },
     },
   ];
@@ -47,5 +61,6 @@ export const usePOrdersDashboard = (): TVariableDashbord => {
     columns,
     ref,
     rows: data || [],
+    handleEdit
   };
 };

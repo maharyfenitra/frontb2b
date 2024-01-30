@@ -30,7 +30,7 @@ export const DashboardGrid = React.forwardRef<
   );
 });
 
-DashboardGrid.displayName = "ItemDashboardGrid";
+DashboardGrid.displayName = "DashboardGrid";
 
 type DashboardGridProps = {
   columns: GridColDef[];

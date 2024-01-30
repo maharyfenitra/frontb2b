@@ -6,14 +6,14 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
 const POrders = () => {
-  const { ref, columns, rows } = usePOrdersDashboard();
+  const { ref, columns, rows, handleEdit } = usePOrdersDashboard();
   const path = usePathname();
   console.log(path)
   const { push } = useRouter();
   return (
     <div>
       <Header title="Purchase Orders" />
-      <TopMenu handleClickCreate={() => push("porders/details")} />
+      <TopMenu handleClickCreate={() => push("porders/details")} handleClickEdit={handleEdit}/>
       <DashboardGrid
         ref={
           ref as unknown as
